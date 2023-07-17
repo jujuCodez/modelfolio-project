@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style> .column {
+        float: left;
+        width: 33.33%;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }</style>
+    <title>ADRIAN NEAH LOZADA</title>
+</head>
+<body>
+    <h1 style="text-align: center;"> ADRIAN NEAH LOAZADA </h1>
+    <h5 style="text-align: center;"> PART-TIME FREELANCE MODEL </h5>
+    <hr>
+    <div class="row">
+        <div class="column"> <a href="/about"> ABOUT </a></div>
+        <div class="column"> <a href="/projects"> ALBUM </a></div>
+        <div class="column"> <a href="/contact"> CONTACT </a></div>
+    </div>
+    <hr>
+    {% include 'navbar.html' %}
+
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>
