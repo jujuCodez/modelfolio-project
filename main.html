@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: rgb(128,25,0);
+            background: linear-gradient(90deg, rgba(128,25,0,1) 0%, rgba(0,0,196,1) 35%, rgba(68,0,140,1) 100%);
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <title>ADRIAN NEAH LOZADA</title>
+</head>
+<body>
+    <h1 style="text-align: center;color: white;"> ADRIAN NEAH LOAZADA </h1>
+    <h5 style="text-align: center;color: white;"> PART-TIME FREELANCE MODEL </h5>
+    <hr>
+    <div class="row">
+        <div class="column" style="color: white;"> <a href="/about"> ABOUT </a></div>
+        <div class="column" style="color: white;"> <a href="/projects"> ALBUM </a></div>
+        <div class="column" style="color: white;"> <a href="/contact"> CONTACT </a></div>
+    </div>
+    <hr>
+    {% include 'navbar.html' %}
+
+    {% block content %}
+
+    {% endblock content %}
+</body>
+</html>
