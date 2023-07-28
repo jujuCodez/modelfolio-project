@@ -1,6 +1,15 @@
+'gradient1'
 body {
             background: rgb(92,19,1);
             background: linear-gradient(90deg, rgba(92,19,1,1) 0%, rgba(0,0,103,1) 50%, rgba(56,0,116,1) 100%);
+            color: white;
+        }
+
+'gradient2'
+body {
+            background: rgb(70,0,55);
+            background: linear-gradient(90deg, rgba(70,0,55,1) 0%, rgba(92,72,0,1) 50%, rgba(0,84,92,1) 100%);
+            color: white;
         }
 
 .column {
@@ -17,6 +26,7 @@ body {
 
 /* For trying to use screenshots of gradients in figma */
 body {
-            background-image: url("picname.jpg");
+            background-image: url("static/images/gradient1.jpg");
             background-repeat: no-repeat;
+            background-size: cover;
         }
