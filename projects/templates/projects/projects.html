@@ -1,17 +1,60 @@
-{% extends "main.html" %}
-{% block content %}
-<ul>
-    {% for project in projects %}
-    <div class="column">
-        <div class="card project">
-            <img class = "project__thumbnail" src="{{project.picture.url}}" alt="project thumbnail" height="50%" width="50%"/>
-            <div class="card__body">
-                <h3 class="project__title" style="font-family: bradley hand, cursive;">{{project.title}}</h3>
-                <p class="project__title" style="font-family: bradley hand, cursive;">{{project.description}}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: rgb(70,0,55);
+            background: linear-gradient(90deg, rgba(70,0,55,1) 0%, rgba(92,72,0,1) 50%, rgba(0,84,92,1) 100%);
+            color: white;
+        }
+
+        a {
+            color: white;
+            font-family: bradley hand, cursive;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <title>ADRIAN NEAH LOZADA</title>
+</head>
+<body>
+    <h1 style="text-align: center"> ADRIAN NEAH LOAZADA </h1>
+    <h5 style="text-align: center"> PART-TIME FREELANCE MODEL </h5>
+    <hr>
+    <div class="row">
+        <div class="column"> <a href="/about"> ABOUT </a></div>
+        <div class="column"> <a href="/projects"> ALBUM </a></div>
+        <div class="column"> <a href="/contact"> CONTACT </a></div>
+    </div>
+    <hr>
+    {% include 'navbar.html' %}
+
+    {% block content %}
+    <ul>
+        {% for project in projects %}
+        <div class="column">
+            <div class="card project">
+                <img class = "project__thumbnail" src="{{project.picture.url}}" alt="project thumbnail" height="50%" width="50%"/>
+                <div class="card__body">
+                    <h3 class="project__title" style="font-family: bradley hand, cursive;">{{project.title}}</h3>
+                    <p class="project__title" style="font-family: bradley hand, cursive;">{{project.description}}</p>
+                </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
-</ul>
-
-{% endblock content %}
+        {% endfor %}
+    </ul>
+    {% endblock content %}
+</body>
+</html>
