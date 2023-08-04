@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Project, About
+from .forms import ContactForm
 
 projectsList = [{
     'id': '1',
@@ -40,5 +41,11 @@ def contact(request):
     page = 'about'
     about = About.objects.all()
     context = {'page': page, 'about': about}
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'projects/about.html')
+    form = ContactForm()
+    context = {'form': form}
     return render(request, 'projects/contact.html', context)
-
