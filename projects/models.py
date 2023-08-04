@@ -20,3 +20,10 @@ class About(models.Model):
     instagram = models.CharField(max_length=200,null=True, blank=True)
     email = models.CharField(max_length=200,null=True, blank=True)
     
+class Contact(models.Model):
+    email = models.EmailField()
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.email
