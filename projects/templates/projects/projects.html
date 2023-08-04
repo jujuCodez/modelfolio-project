@@ -1,60 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background: rgb(70,0,55);
-            background: linear-gradient(90deg, rgba(70,0,55,1) 0%, rgba(92,72,0,1) 50%, rgba(0,84,92,1) 100%);
+            background: radial-gradient(circle, rgba(92, 19, 1, 1), rgba(0, 0, 103, 1), rgba(56, 0, 116, 1));
+            background-size: 600% 600%;
+            animation: gradientShift 10s ease infinite;
             color: white;
+            margin: 0;
+            overflow:auto;
         }
+        .cont{
+    position:relative;
+    overflow:hidden;
+    height:200px;
+    width:100%;
+    border:1px solid red;
+}
+.s{
+    overflow-y:scroll;
+    height:200px;
+    width:100%;
+    position:absolute;
+    right:-30px;
+}
 
         a {
             color: white;
             font-family: bradley hand, cursive;
         }
 
-        .column {
-            float: left;
-            width: 33.33%;
+        .container {
+            align-items: center;
+            justify-content: space-between;
+            transform: translate(1%, 10%);
         }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 100px; /* Adjust the gap between columns as needed */
+            margin-top: 5vh; /* Adjust the margin as needed to shift the text down */
+            border: none;
+            z-index: 1; /* Add a higher z-index to make sure the navbar stays on top */
+        }
+
+        .column {
+            text-align: center;
+            border: none;
+        }
+
+        /* Remove the outline from links */
+        .column a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Center the projects list */
+        .projects-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo {
+            margin: 10px;
+        }
+
+        /* Style each project item */
+        .project-item {
+            margin: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .project-item img {
+            width: 200px; /* Adjust the image size as needed */
+            height: 200px; /* Adjust the image size as needed */
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .project-item:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0 50%;
+            }
+            50% {
+                background-position: 100% 25%;
+            }
+            100% {
+                background-position: 0 50%;
+            }
+        }
+
+        .keystone {
+            font-family: "Keystone";
+            letter-spacing: 0.1em;
+            font-size: 1.5rem; /* Adjust the font size as needed */
+            color: white;
+            margin: 0;
+        }
+
+        .gexo-sans-font {
+            font-family: "Gexo Sans";
+            font-size: 0.8rem; /* Adjust the font size as needed */
+            color: white;
+            margin: 0;
+            transform: translate(9%, 20%);
+        }
+
+        hr {
+            border: none;
+        }
+
+        .gallery {
+            padding-top: 10px; /* Add padding to the top of the gallery to avoid overlap with the navbar */
         }
     </style>
     <title>ADRIAN NEAH LOZADA</title>
 </head>
+
 <body>
-    <h1 style="text-align: center"> ADRIAN NEAH LOAZADA </h1>
-    <h5 style="text-align: center"> PART-TIME FREELANCE MODEL </h5>
-    <hr>
-    <div class="row">
-        <div class="column"> <a href="/about"> ABOUT </a></div>
-        <div class="column"> <a href="/projects"> ALBUM </a></div>
-        <div class="column"> <a href="/contact"> CONTACT </a></div>
+    <div class="container">
+        <div class='logo'>
+            <h1 class="keystone"> ADRIAN NEAH LOAZADA </h1>
+            <h5 class="gexo-sans-font"> PART-TIME FREELANCE MODEL </h5>
+        </div>
+        <div class="row">
+            <div class="column"> <a href="/about"> ABOUT </a></div>
+            <div class="column"> <a href="/projects"> ALBUM </a></div>
+            <div class="column"> <a href="/contact"> CONTACT </a></div>
+        </div>
     </div>
     <hr>
-    {% include 'navbar.html' %}
 
-    {% block content %}
-    <ul>
-        {% for project in projects %}
-        <div class="column">
-            <div class="card project">
-                <img class = "project__thumbnail" src="{{project.picture.url}}" alt="project thumbnail" height="50%" width="50%"/>
-                <div class="card__body">
-                    <h3 class="project__title" style="font-family: bradley hand, cursive;">{{project.title}}</h3>
-                    <p class="project__title" style="font-family: bradley hand, cursive;">{{project.description}}</p>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </ul>
-    {% endblock content %}
+    <div class="projects-list">
+        <!-- Add images dynamically to this section -->
+    </div>
+    <div class="gallery"></div>
+    <script>
+        // Sample image URLs (you can replace these with your actual image URLs)
+        const sampleImages = [
+          "/images/album/1.JPG",
+          "/images/album/2.JPG",
+          "/images/album/3.JPG",
+          "/images/album/4.JPG",
+          "/images/album/5.JPG",
+          "/images/album/6.JPG",
+          "/images/album/7.JPG",
+          "/images/album/8.JPG",
+          "/images/album/9.JPG",
+          "/images/album/10.JPG",
+          "/images/album/11.JPG",
+          "/images/album/12.JPG",
+          "/images/album/13.JPG",
+          "/images/album/14.JPG",
+          "/images/album/15.JPG",
+        ];
+      
+        // Function to create a gallery item with an image
+        function createGalleryItem(imageUrl) {
+          const projectItem = document.createElement("div");
+          projectItem.classList.add("project-item");
+      
+          const image = document.createElement("img");
+          image.src = imageUrl;
+          image.alt = "Image";
+          projectItem.appendChild(image);
+      
+          return projectItem;
+        }
+      
+        // Function to add images to the gallery
+        function addImagesToGallery() {
+          const projectsList = document.querySelector(".projects-list");
+          for (const imageUrl of sampleImages) {
+            const galleryItem = createGalleryItem(imageUrl);
+            projectsList.appendChild(galleryItem);
+          }
+        }
+      
+        // Call the function to add images to the gallery
+        addImagesToGallery();
+      </script>
 </body>
+
 </html>
