@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+            @font-face {
+        font-family: "Keystone"; /* You can choose any name for the font-family */
+        src: url("/static/fonts/Keystone.ttf"); /* Replace "your-font-file.ttf" with the actual filename of the font */
+    }
+    @font-face {
+        font-family: "Gexo"; /* You can choose any name for the font-family */
+        src: url("/static/fonts/Gexo\ Sans\ Regular.ttf"); /* Replace "your-font-file.ttf" with the actual filename of the font */
+    }
         body {
-            background: radial-gradient(circle, rgba(92, 19, 1, 1), rgba(0, 0, 103, 1), rgba(56, 0, 116, 1));
+            background: radial-gradient(circle, rgb(37, 7, 0), rgb(0, 0, 0), rgb(89, 50, 131));
             background-size: 600% 600%;
-            animation: gradientShift 10s ease infinite;
+            animation: gradientShift 20s ease infinite;
             color: white;
             margin: 0;
             overflow:auto;
@@ -55,6 +63,8 @@
 
         /* Remove the outline from links */
         .column a {
+            font-family: "Gexo";
+            font-size: 1.3rem; /* Adjust the font size as needed */
             text-decoration: none;
             color: white;
         }
@@ -67,10 +77,37 @@
             list-style: none;
             padding: 0;
             margin: 0;
+            position: relative; /* Add this to enable stacking context */
         }
 
         .logo {
             margin: 10px;
+        }
+
+        .project-overlay {
+            /* Styles for the fixed-position overlay */
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            backdrop-filter: blur(5px); /* Apply backdrop filter to blur the background */
+            z-index: 2; /* Ensure the overlay is above other elements */
+            pointer-events: none; /* Allow clicking through the overlay to access underlying elements */
+        }
+        .project-overlay img {
+            /* Styles for the image within the overlay */
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 80%; /* Adjust the size of the image as needed */
+            max-height: 80vh; /* Adjust the size of the image as needed */
+            border-radius: 15px;
+            pointer-events: auto; /* Allow clicking on the image */
         }
 
         /* Style each project item */
@@ -83,15 +120,16 @@
         }
 
         .project-item img {
-            width: 200px; /* Adjust the image size as needed */
-            height: 200px; /* Adjust the image size as needed */
+            width: 220px; /* Adjust the image size as needed */
+            height: 350px; /* Adjust the image size as needed */
             object-fit: cover;
             border-radius: 15px;
         }
 
         .project-item:hover {
-            transform: scale(1.05);
+            transform: scale(1.5);
         }
+
 
         @keyframes gradientShift {
             0% {
@@ -114,11 +152,11 @@
         }
 
         .gexo-sans-font {
-            font-family: "Gexo Sans";
+            font-family: "Gexo";
             font-size: 0.8rem; /* Adjust the font size as needed */
             color: white;
             margin: 0;
-            transform: translate(9%, 20%);
+            transform: translate(0%, 20%);
         }
 
         hr {
@@ -128,6 +166,14 @@
         .gallery {
             padding-top: 10px; /* Add padding to the top of the gallery to avoid overlap with the navbar */
         }
+        .gexo {
+        font-family: "Gexo";
+        font-size: 1.2rem; /* Adjust the font size as needed */
+        color: white;
+        margin: 0;
+        transform: translate(0%, 120%);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add drop shadow to the keystone text */
+    }
     </style>
     <title>ADRIAN NEAH LOZADA</title>
 </head>
@@ -170,28 +216,60 @@
           "/images/album/15.JPG",
         ];
       
-        // Function to create a gallery item with an image
         function createGalleryItem(imageUrl) {
-          const projectItem = document.createElement("div");
-          projectItem.classList.add("project-item");
-      
-          const image = document.createElement("img");
-          image.src = imageUrl;
-          image.alt = "Image";
-          projectItem.appendChild(image);
-      
-          return projectItem;
+            const projectItem = document.createElement("div");
+            projectItem.classList.add("project-item");
+
+            const image = document.createElement("img");
+            image.src = imageUrl;
+            image.alt = "Image";
+            projectItem.appendChild(image);
+
+            return projectItem;
         }
-      
+
+        function handleHoverAnimation(event) {
+            const projectItem = event.currentTarget;
+            const overlay = projectItem.querySelector(".project-overlay");
+            const image = overlay.querySelector("img");
+
+            // Set the source of the overlay image to the hovered image URL
+            const imageUrl = projectItem.querySelector("img").src;
+            image.src = imageUrl;
+
+            overlay.style.display = "flex";
+        }
+
+        function handleClick(event) {
+            const projectItem = event.currentTarget;
+            const imageUrl = projectItem.querySelector("img").src;
+            window.location.href = imageUrl; // Redirect to the image link
+        }
+
+        function addEventListenersToGalleryItems() {
+            const galleryItems = document.querySelectorAll(".project-item");
+            galleryItems.forEach((item) => {
+                item.addEventListener("mouseover", handleHoverAnimation);
+                item.addEventListener("mouseout", () => {
+                    const overlay = item.querySelector(".project-overlay");
+                    overlay.style.display = "none";
+                });
+                item.addEventListener("click", handleClick);
+            });
+        }
+
         // Function to add images to the gallery
         function addImagesToGallery() {
-          const projectsList = document.querySelector(".projects-list");
-          for (const imageUrl of sampleImages) {
-            const galleryItem = createGalleryItem(imageUrl);
-            projectsList.appendChild(galleryItem);
-          }
+            const projectsList = document.querySelector(".projects-list");
+            for (const imageUrl of sampleImages) {
+                const galleryItem = createGalleryItem(imageUrl);
+                projectsList.appendChild(galleryItem);
+            }
+
+            // Call the function to add event listeners to gallery items
+            addEventListenersToGalleryItems();
         }
-      
+
         // Call the function to add images to the gallery
         addImagesToGallery();
       </script>
