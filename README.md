@@ -6,6 +6,10 @@ This web application was developed as a software project using the Django web fr
 
 ---
 
+![Modelfolio UI Preview](https://i.imgur.com/tjBkyHB.png)
+
+---
+
 ## 🌟 Project Highlights
 
 - 🎨 Elegant, responsive, and customizable design
@@ -52,8 +56,8 @@ We created **Modelfolio**, a Django-powered portfolio website featuring:
 
 ### 2. Prototyping
 - Designed a high-fidelity prototype using **Figma**
-- Aligned the layout and visuals with modeling industry standards
-- Final design approved by the client
+- 📌 [View our Figma Design Prototype](https://www.figma.com/proto/MAjSWMSR0abjoe3M9iSzXk/Portfolio-WEbsite-UI-UX?node-id=0-1&t=iWvSh3Kl361Qeg9O-1)
+- Final layout approved after client consultation
 
 ### 3. Tech Stack
 
@@ -65,7 +69,7 @@ We created **Modelfolio**, a Django-powered portfolio website featuring:
 | Deployment  | PythonAnywhere                 |
 
 ### 4. Development
-- Built using Django’s MVC (MVT) structure
+- Built using Django’s MVT structure
 - Developed reusable templates and views
 - Implemented Django Admin for backend CMS
 
@@ -76,8 +80,7 @@ We created **Modelfolio**, a Django-powered portfolio website featuring:
 
 ### 6. Deployment
 - Deployed on PythonAnywhere (free hosting)
-- Faced minor design bugs due to limited styling support
-- Planning to migrate to a more flexible hosting platform
+- Working to migrate to more flexible hosting due to style limitations
 
 ---
 
@@ -149,5 +152,3 @@ Developed by a team of Computer Engineering students from De La Salle University
 ## 📬 Contact
 
 Have feedback or suggestions? Open an issue or fork the project!
-
-```
