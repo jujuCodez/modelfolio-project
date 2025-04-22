@@ -125,13 +125,6 @@ We created **Modelfolio**, a Django-powered portfolio website featuring:
 
 ---
 
-## 🌐 Live Demo
-
-You can explore the deployed version here:  
-**🔗 http://adrianneah.pythonanywhere.com**
-
----
-
 ## 📜 License
 
 This project is licensed under the MIT License.  
